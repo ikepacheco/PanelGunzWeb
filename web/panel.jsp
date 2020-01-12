@@ -45,13 +45,12 @@
         <%
             //response.sendRedirect("/Tienda/"); //redirecciona web
             }else{
-                if(!urn.equals("demon") && !pssw.equals("123")){
+                if((!urn.equals("demon")) || (!pssw.equals("123") || urn.equals("")) || pssw.equals("")){
                 %>
-        <h1><%=urn%></h1>
-        <h1><%=pssw%></h1>
+        
         <center>
             <div class="alert alert-danger" role="alert" id="errorLogged">
-                Error while logging.
+                Error while logging.<h1>User: <%=urn%> </h1><h1>Password: <%=pssw%></h1>
             </div>
         </center>
         <script>
@@ -63,8 +62,10 @@
                 }else{
                     logged = true;
                     if(logged){
+                    session.setAttribute("username", "demon");
+                    Object obj = session.getAttribute("username");
         %>
-        <h1>Hello World!</h1>
+        <h1>Hello <a href="accounts.jsp"><%=obj%>!</a></h1>
         <%
                     }
                 }
