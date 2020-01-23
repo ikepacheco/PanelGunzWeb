@@ -45,6 +45,7 @@ public class Panel extends HttpServlet {
 					session.setAttribute("username", account.getUsername());
 					session.removeAttribute("error");
 					request.getRequestDispatcher("panel.jsp").forward(request, response);
+					request.getRequestDispatcher("indexpage.jsp").forward(request, response);
 				}else {
 					session.setAttribute("error","Cuenta invalida");
 					session.removeAttribute("username");
@@ -67,6 +68,8 @@ public class Panel extends HttpServlet {
 				}
 				session.removeAttribute("username");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("accounts")) {
+				request.getRequestDispatcher("accounts.jsp").forward(request, response);
 			}
 		}
 	}

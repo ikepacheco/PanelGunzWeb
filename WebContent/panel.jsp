@@ -13,6 +13,7 @@
 HttpSession urn = request.getSession();
 String objErr = (String)urn.getAttribute("error");
 String objUsr = (String)urn.getAttribute("username");
+String act = (String)request.getParameter("action");
 if(objErr != null || objUsr == null){
 		
 %>
@@ -29,55 +30,16 @@ if(objErr != null || objUsr == null){
 <%
 	}
 	else{
-		%>
-		
-		<div class="d-flex justify-content-center border bg-light">
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-			  <label class="btn btn-secondary active bg-dark">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked disabled>Bienvenido ${sessionScope.username}
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Inicio
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Accounts
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Characters
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Login
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Clans
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Edit Accounts
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Edit Characters
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Edit Clans
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">DonatorCoins
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">EventCoins
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option4" autocomplete="off">Buscar
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option5" autocomplete="off" onClick="location.href='Panel?action=logout'">Logout
-			  </label>
-			</div>
-		</div>
-		
-		
-		<%
+
+		//request.getRequestDispatcher("menu.jsp").forward(request, response);
+			
+				%>
+				<jsp:include page="menu.jsp"></jsp:include>
+				<jsp:include page="indexpage.jsp"></jsp:include>
+				<%
+			
 	}
+	
 %>
 </body>
 </html>
