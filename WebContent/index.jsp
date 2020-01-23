@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
+<link  rel="icon"   href="img/demonfas.ico" type="image/ico" />
 <title>Panel Gunz by Demon</title>
 </head>
 <body id="bdy">
