@@ -70,6 +70,16 @@ public class Panel extends HttpServlet {
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("accounts")) {
 				request.getRequestDispatcher("accounts.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("characters")) {
+				request.getRequestDispatcher("characters.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("login")) {
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("clans")) {
+				request.getRequestDispatcher("clans.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("dcoins")) {
+				request.getRequestDispatcher("dcoins.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("ecoins")) {
+				request.getRequestDispatcher("ecoins.jsp").forward(request, response);
 			}
 		}
 	}

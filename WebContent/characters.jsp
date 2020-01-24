@@ -7,25 +7,25 @@
 %>
 	<jsp:include page="menu.jsp"></jsp:include>
 
-	<div class="card mx-auto w-95" style="margin-top: 40px;">
-		<h5 class="card-header h5">All Accounts</h5>
+	<div class="card mx-auto  w-95" style="margin-top: 40px;">
+		<h5 class="card-header h5">All Characters</h5>
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">#</th>
+							<th scope="col">CID</th>
 							<th scope="col">AID</th>
-							<th scope="col">UserID</th>
-							<th scope="col">UGrade</th>
-							<th scope="col">DCoins</th>
-							<th scope="col">ECoins</th>
-							<th scope="col">Country</th>
-							<th scope="col">RedColor</th>
-							<th scope="col">BlueColor</th>
-							<th scope="col">GreenColor</th>
-							<th scope="col">Question</th>
-							<th scope="col">Answer</th>
+							<th scope="col">Name</th>
+							<th scope="col">Sex</th>
+							<th scope="col">Level</th>
+							<th scope="col">XP</th>
+							<th scope="col">BP</th>
+							<th scope="col">PlayTime(days)</th>
+							<th scope="col">Kills</th>
+							<th scope="col">Deaths</th>
+							<th scope="col">Ranking</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,17 +34,17 @@
 	  %>
 						<tr>
 							<th scope="row"><%=i%></th>
+							<td><%=i+5%></td>
 							<td><%=i+7%></td>
 							<td>demon</td>
-							<td>255</td>
-							<td>999</td>
-							<td>999</td>
-							<td>PE</td>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
-							<td>sa</td>
-							<td>sq</td>
+							<td>Man</td>
+							<td>99</td>
+							<td>999999</td>
+							<td>999999</td>
+							<td>35</td>
+							<td>500</td>
+							<td>400</td>
+							<td><%=i %></td>
 						</tr>
 						<!-- <tr>
       <th scope="row">2</th>

@@ -8,7 +8,7 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 
 	<div class="card mx-auto w-95" style="margin-top: 40px;">
-		<h5 class="card-header h5">All Accounts</h5>
+		<h5 class="card-header h5">All Logged Accounts</h5>
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table">
@@ -16,16 +16,9 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">AID</th>
-							<th scope="col">UserID</th>
-							<th scope="col">UGrade</th>
-							<th scope="col">DCoins</th>
-							<th scope="col">ECoins</th>
-							<th scope="col">Country</th>
-							<th scope="col">RedColor</th>
-							<th scope="col">BlueColor</th>
-							<th scope="col">GreenColor</th>
-							<th scope="col">Question</th>
-							<th scope="col">Answer</th>
+							<th scope="col">Password</th>
+							<th scope="col">LastIP</th>
+							<th scope="col">LastConnect</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,16 +28,9 @@
 						<tr>
 							<th scope="row"><%=i%></th>
 							<td><%=i+7%></td>
-							<td>demon</td>
-							<td>255</td>
-							<td>999</td>
-							<td>999</td>
-							<td>PE</td>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
-							<td>sa</td>
-							<td>sq</td>
+							<td>*********</td>
+							<td>127.0.0.1</td>
+							<td>23/01/2020</td>
 						</tr>
 						<!-- <tr>
       <th scope="row">2</th>
