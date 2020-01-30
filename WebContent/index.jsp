@@ -11,9 +11,18 @@
 </head>
 <body id="bdy">
 	<div class="vertical-center">
-		<div class="container border text-center cont">
+		<div class="container text-center cont" id="ctnrprincipal">
 			<img src="img/login_icon.png" alt="" id="imgLoginTop" />
 			<form method="post" action="Panel">
+				
+				<% 
+					HttpSession usr_recordar = request.getSession();
+					String _username_recordar = (String)usr_recordar.getAttribute("username_recordar");
+					
+					if(_username_recordar == null){
+						
+				%>
+				
 				<div class="col-auto">
 					<label class="sr-only" for="inlineFormInputGroup">Username</label>
 					<div class="input-group mb-2">
@@ -23,9 +32,31 @@
 							</div>
 						</div>
 						<input type="text" class="form-control" id="inlineFormInputGroup"
-							placeholder="Username" name="username">
+							placeholder="Username" name="username" value="${sessionScope.username_recordar}">
 					</div>
 				</div>
+				
+				<%
+					}else{
+				%>
+				
+				<div class="col-auto">
+					<label class="sr-only" for="inlineFormInputGroup">Username</label>
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<img src="img/login.png" alt="" id="imgLogin" />
+							</div>
+						</div>
+						<input type="text" class="form-control" id="inlineFormInputGroup"
+							placeholder="Username" name="username" value="${sessionScope.username_recordar}">
+					</div>
+				</div>
+				
+				<%
+					}
+				%>
+				
 				<div class="col-auto">
 					<label class="sr-only" for="inlineFormInputGroup">Password</label>
 					<div class="input-group mb-2">
@@ -38,12 +69,16 @@
 							id="inlineFormInputGroup" placeholder="Password" name="password">
 					</div>
 				</div>
-				<div class="custom-control custom-checkbox" id="rmber">
+				<div class="custom-control custom-checkbox" id="rmber" style="display: none;">
 					<input type="checkbox" class="custom-control-input"
-						id="defaultUnchecked" name="remember"> <label
-						class="custom-control-label" for="defaultUnchecked">Remember
+						id="defaultUnchecked" name="remember" style="display: none;" checked> <label
+						class="custom-control-label" for="defaultUnchecked"  style="display: none;">Remember
 						Session</label>
 				</div>
+				<div class="custom-control custom-checkbox my-1 mr-sm-2" id="rmber">
+			    	<input type="checkbox" class="custom-control-input" id="customControlInline" name="username_recordar">
+			    	<label class="custom-control-label" for="customControlInline">Remember Username</label>
+			    </div>
 				<button type="submit" class="btn btn-primary" id="btnLogin">Submit</button>
 
 				<%

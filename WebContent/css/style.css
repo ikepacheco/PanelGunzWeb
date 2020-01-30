@@ -48,3 +48,9 @@
 	padding-right: 183px;
 	margin-bottom: 10px;
 }
+#ctnrprincipal{
+	border-style:solid;
+	border-width: 1px;
+	border-radius: 8px;
+	border-color: #009ada;
+}

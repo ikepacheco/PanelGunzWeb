@@ -44,6 +44,7 @@ public class Panel extends HttpServlet {
 				if(accModel.login(account.getUsername(), account.getPassword())){
 					session.setAttribute("username", account.getUsername());
 					session.removeAttribute("error");
+					session.setAttribute("username_recordar", account.getUsername()); //agregar username recordar a la sesion
 					request.getRequestDispatcher("panel.jsp").forward(request, response);
 					request.getRequestDispatcher("indexpage.jsp").forward(request, response);
 				}else {
@@ -67,6 +68,7 @@ public class Panel extends HttpServlet {
 					}
 				}
 				session.removeAttribute("username");
+				//esto redirecciona a cualquier pagina que sea agregada (debe ser agregada aca)
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("accounts")) {
 				request.getRequestDispatcher("accounts.jsp").forward(request, response);
@@ -90,12 +92,14 @@ public class Panel extends HttpServlet {
 		if(cookies == null) {
 			return null;
 		}else {
-			String username = "", password="";
+			String username = "", password="", username_recordar=""; //agregar user name recordar falta testear si sirve sin esto
 			for(Cookie ck : cookies) {
 				if(ck.getName().equalsIgnoreCase("username"))
 					username = ck.getValue();
 				if(ck.getName().equalsIgnoreCase("password"))
 					password = ck.getValue();
+				if(ck.getName().equalsIgnoreCase("username_recordar"))
+					username_recordar = ck.getValue();
 			}
 			if(!username.isEmpty() && !password.isEmpty())
 				account = new Account(username,password);
@@ -114,6 +118,7 @@ public class Panel extends HttpServlet {
 			String username = request.getParameter("username").trim();
 			String password = request.getParameter("password").trim();
 			boolean remember = request.getParameter("remember") != null;
+			boolean username_recordar = request.getParameter("username_recordar") != null; //verificar si checkbox esta activado
 			if(accModel.login(username, password)) {
 				session.removeAttribute("error");
 				session.setAttribute("username", username);
@@ -124,6 +129,23 @@ public class Panel extends HttpServlet {
 					Cookie ckPassword = new Cookie ("password", password);
 					ckPassword.setMaxAge(3600);
 					response.addCookie(ckPassword);
+				}
+				if(username_recordar) {
+					session.setAttribute("username_recordar", username); //agregar atributo a la session para recordar username
+					Cookie ckUsernameRecordar = new Cookie ("username_recordar", username);
+					ckUsernameRecordar.setMaxAge(60 * 60 * 24 * 180);
+					response.addCookie(ckUsernameRecordar);//agregar la cookie de username
+				}
+				if(!username_recordar){
+					session.removeAttribute("username_recordar");
+					Cookie[] cookies = request.getCookies();
+					for(Cookie ck : cookies) {
+						if(ck.getName().equalsIgnoreCase("username_recordar")) {
+							ck.setMaxAge(0);
+							response.addCookie(ck);
+						}							
+					}//en caso este desactivado el checkbox cuando inicies sesion se eliminara todo relacionado con la sesion y cookies de
+					//recordar_username
 				}
 				request.getRequestDispatcher("panel.jsp").forward(request, response);
 			}else {
