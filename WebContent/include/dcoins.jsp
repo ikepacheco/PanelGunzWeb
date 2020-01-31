@@ -6,8 +6,8 @@
 %>
 <jsp:include page="menu.jsp"></jsp:include>
 <body>
-	<div class="card mx-auto w-95" style="margin-top: 40px;">
-		<h5 class="card-header h5">Edit Donator Coins</h5>
+	<div class="card mx-auto w-95 border-secondary" style="margin-top: 40px;">
+		<h5 class="card-header h5 bg-secondary text-white">Edit Donator Coins</h5>
 		<div class="card-body my-auto text-center">
 
 			<div class="card mx-auto w-95" style="margin-top: 40px;">

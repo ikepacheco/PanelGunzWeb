@@ -45,7 +45,7 @@ public class Panel extends HttpServlet {
 					session.setAttribute("username", account.getUsername());
 					session.removeAttribute("error");
 					session.setAttribute("username_recordar", account.getUsername()); //agregar username recordar a la sesion
-					request.getRequestDispatcher("panel.jsp").forward(request, response);
+					request.getRequestDispatcher("include/panel.jsp").forward(request, response);
 					request.getRequestDispatcher("indexpage.jsp").forward(request, response);
 				}else {
 					session.setAttribute("error","Cuenta invalida");
@@ -71,17 +71,25 @@ public class Panel extends HttpServlet {
 				//esto redirecciona a cualquier pagina que sea agregada (debe ser agregada aca)
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("accounts")) {
-				request.getRequestDispatcher("accounts.jsp").forward(request, response);
+				request.getRequestDispatcher("include/accounts.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("characters")) {
-				request.getRequestDispatcher("characters.jsp").forward(request, response);
+				request.getRequestDispatcher("include/characters.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("login")) {
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("include/login.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("clans")) {
-				request.getRequestDispatcher("clans.jsp").forward(request, response);
+				request.getRequestDispatcher("include/clans.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("eaccounts")) {
+				request.getRequestDispatcher("include/eaccounts.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("echaracters")) {
+				request.getRequestDispatcher("include/echaracters.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("eclans")) {
+				request.getRequestDispatcher("include/eclans.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("dcoins")) {
-				request.getRequestDispatcher("dcoins.jsp").forward(request, response);
+				request.getRequestDispatcher("include/dcoins.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("ecoins")) {
-				request.getRequestDispatcher("ecoins.jsp").forward(request, response);
+				request.getRequestDispatcher("include/ecoins.jsp").forward(request, response);
+			}else if(action.equalsIgnoreCase("buscar")) {
+				request.getRequestDispatcher("include/buscar.jsp").forward(request, response);
 			}
 		}
 	}
@@ -147,7 +155,7 @@ public class Panel extends HttpServlet {
 					}//en caso este desactivado el checkbox cuando inicies sesion se eliminara todo relacionado con la sesion y cookies de
 					//recordar_username
 				}
-				request.getRequestDispatcher("panel.jsp").forward(request, response);
+				request.getRequestDispatcher("include/panel.jsp").forward(request, response);
 			}else {
 				session.setAttribute("error","Cuenta invalida");
 				request.getRequestDispatcher("index.jsp").forward(request, response);

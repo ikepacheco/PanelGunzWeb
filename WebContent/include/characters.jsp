@@ -7,18 +7,25 @@
 %>
 	<jsp:include page="menu.jsp"></jsp:include>
 
-	<div class="card mx-auto w-95" style="margin-top: 40px;">
-		<h5 class="card-header h5">All Logged Accounts</h5>
+	<div class="card mx-auto w-95 border-secondary" style="margin-top: 40px;">
+		<h5 class="card-header h5 bg-secondary text-white">All Characters</h5>
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">#</th>
+							<th scope="col">CID</th>
 							<th scope="col">AID</th>
-							<th scope="col">Password</th>
-							<th scope="col">LastIP</th>
-							<th scope="col">LastConnect</th>
+							<th scope="col">Name</th>
+							<th scope="col">Sex</th>
+							<th scope="col">Level</th>
+							<th scope="col">XP</th>
+							<th scope="col">BP</th>
+							<th scope="col">PlayTime(days)</th>
+							<th scope="col">Kills</th>
+							<th scope="col">Deaths</th>
+							<th scope="col">Ranking</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,10 +34,17 @@
 	  %>
 						<tr>
 							<th scope="row"><%=i%></th>
+							<td><%=i+5%></td>
 							<td><%=i+7%></td>
-							<td>*********</td>
-							<td>127.0.0.1</td>
-							<td>23/01/2020</td>
+							<td>demon</td>
+							<td>Man</td>
+							<td>99</td>
+							<td>999999</td>
+							<td>999999</td>
+							<td>35</td>
+							<td>500</td>
+							<td>400</td>
+							<td><%=i %></td>
 						</tr>
 						<!-- <tr>
       <th scope="row">2</th>
