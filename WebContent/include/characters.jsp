@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="model.Conexion" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -29,53 +35,39 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-  for (int i = 1; i <= 20; i++){
-	  %>
-						<tr>
-							<th scope="row"><%=i%></th>
-							<td><%=i+5%></td>
-							<td><%=i+7%></td>
-							<td>demon</td>
-							<td>Man</td>
-							<td>99</td>
-							<td>999999</td>
-							<td>999999</td>
-							<td>35</td>
-							<td>500</td>
-							<td>400</td>
-							<td><%=i %></td>
-						</tr>
-						<!-- <tr>
-      <th scope="row">2</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr> -->
-						<%
-    } %>
+						<% 	
+						Conexion con = new Conexion();
+						Connection cn = con.con();
+						int i = 1;
+						try{
+							Statement st = cn.createStatement();
+							ResultSet rst = st.executeQuery("SELECT * FROM Character");
+							while(rst.next()){
+								%>
+								<tr>
+								<th scope='row'><%=i%></th>
+								<td><%=rst.getInt("CID")%></td>
+								<td><%=rst.getInt("AID")%></td>
+								<td><%=rst.getString("Name")%></td>
+									<td><%=rst.getInt("Sex")%></td>
+									<td><%=rst.getInt("Level")%></td>
+									<td><%=rst.getString("XP")%></td>
+									<td><%=rst.getInt("BP")%></td>
+									<td><%=rst.getInt("PlayTime")%></td>
+									<td><%=rst.getInt("KillCount")%></td>
+									<td><%=rst.getInt("DeathCount")%></td>
+									<td><%=rst.getInt("Ranking")%></td>
+									</tr>
+									<%
+								i++;
+							}
+						}
+						catch(SQLException ex){
+
+							%>
+							<tr><td><%=ex%></td></tr>
+								<%
+						} %>
 					</tbody>
 				</table>
 			</div>

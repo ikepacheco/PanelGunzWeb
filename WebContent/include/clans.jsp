@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="model.Conexion" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -24,48 +30,34 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-  for (int i = 1; i <= 20; i++){
-	  %>
-						<tr>
-							<th scope="row"><%=i%></th>
-							<td><%=i+2%></td>
-							<td>Light</td>
-							<td>demon</td>
-							<td><%=1021+(i*3) %></td>
-							<td><%=10+(i*3) %></td>
-							<td><%=3+(i*2) %></td>
-						</tr>
-						<!-- <tr>
-      <th scope="row">2</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr> -->
-						<%
-    } %>
+						<% 	
+						Conexion con = new Conexion();
+						Connection cn = con.con();
+						int i = 1;
+						try{
+							Statement st = cn.createStatement();
+							ResultSet rst = st.executeQuery("SELECT * FROM Clan, Character where Clan.MasterCID = Character.CID AND Clan.DeleteFlag!=1 ORDER BY Clan.CLID");
+							while(rst.next()){
+								%>
+								<tr>
+								<th scope='row'><%=i%></th>
+								<td><%=rst.getInt("CLID")%></td>
+								<td><%=rst.getString("Name")%></td>
+								<td><%=rst.getString(27)%></td>
+									<td><%=rst.getInt("Point")%></td>
+									<td><%=rst.getInt("Wins")%></td>
+									<td><%=rst.getInt("Losses")%></td>
+									</tr>
+									<%
+								i++;
+							}
+						}
+						catch(SQLException ex){
+
+							%>
+							<tr><td><%=ex%></td></tr>
+								<%
+						} %>
 					</tbody>
 				</table>
 			</div>

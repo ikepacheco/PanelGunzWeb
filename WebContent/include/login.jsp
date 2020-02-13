@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="model.Conexion" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -15,6 +21,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">#</th>
+							<th scope="col">UserID</th>
 							<th scope="col">AID</th>
 							<th scope="col">Password</th>
 							<th scope="col">LastIP</th>
@@ -22,46 +29,33 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-  for (int i = 1; i <= 20; i++){
-	  %>
-						<tr>
-							<th scope="row"><%=i%></th>
-							<td><%=i+7%></td>
-							<td>*********</td>
-							<td>127.0.0.1</td>
-							<td>23/01/2020</td>
-						</tr>
-						<!-- <tr>
-      <th scope="row">2</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr> -->
-						<%
-    } %>
+						<% 	
+						Conexion con = new Conexion();
+						Connection cn = con.con();
+						int i = 1;
+						try{
+							Statement st = cn.createStatement();
+							ResultSet rst = st.executeQuery("SELECT * FROM Login order by UserID asc");
+							while(rst.next()){
+								%>
+								<tr>
+								<th scope='row'><%=i%></th>
+								<td><%=rst.getString("UserID")%></td>
+								<td><%=rst.getInt("AID")%></td>
+								<td>**********</td>
+								<td><%=rst.getString("LastIP")%></td>
+									<td><%=rst.getString("LastConnDate")%></td>
+									</tr>
+									<%
+								i++;
+							}
+						}
+						catch(SQLException ex){
+
+							%>
+							<tr><td><%=ex%></td></tr>
+								<%
+						} %>
 					</tbody>
 				</table>
 			</div>

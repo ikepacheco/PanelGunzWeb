@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="model.*" %>
+<%@ page import="model.Conexion" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -22,19 +28,52 @@
 							<th scope="col">ECoins</th>
 							<th scope="col">Country</th>
 							<th scope="col">RedColor</th>
-							<th scope="col">BlueColor</th>
 							<th scope="col">GreenColor</th>
+							<th scope="col">BlueColor</th>
 							<th scope="col">Question</th>
 							<th scope="col">Answer</th>
 						</tr>
 					</thead>
 					<tbody>
-						<%
-  for (int i = 1; i <= 20; i++){
+					<% 	
+						Conexion con = new Conexion();
+						Connection cn = con.con();
+						int i = 1;
+						try{
+							Statement st = cn.createStatement();
+							ResultSet rst = st.executeQuery("SELECT * FROM Account");
+							while(rst.next()){
+								%>
+								<tr>
+								<th scope='row'><%=i%></th>
+								<td><%=rst.getInt("AID")%></td>
+								<td><%=rst.getString("UserID")%></td>
+								<td><%=rst.getInt("UGradeID")%></td>
+									<td><%=rst.getString("DonatorCoins")%></td>
+									<td><%=rst.getString("EventCoins")%></td>
+									<td><%=rst.getString("Country")%></td>
+									<td><%=rst.getInt("RedColor")%></td>
+									<td><%=rst.getInt("GreenColor")%></td>
+									<td><%=rst.getInt("BlueColor")%></td>
+									<td><%=rst.getString("sq")%></td>
+									<td><%=rst.getString("sa")%></td>
+									</tr>
+									<%
+								i++;
+							}
+						}
+						catch(SQLException ex){
+
+							%>
+							<tr><td><%=ex%></td></tr>
+								<%
+						}
+						
+  //for (int i = 1; i <= 20; i++){
 	  %>
-						<tr>
-							<th scope="row"><%=i%></th>
-							<td><%=i+7%></td>
+						<!-- <tr>
+							<th scope="row"></th>
+							<td></td>
 							<td>demon</td>
 							<td>255</td>
 							<td>999</td>
@@ -43,39 +82,10 @@
 							<td>0</td>
 							<td>0</td>
 							<td>0</td>
-							<td>sa</td>
 							<td>sq</td>
-						</tr>
-						<!-- <tr>
-      <th scope="row">2</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>1</td>
-      <td>demon</td>
-      <td>255</td>
-      <td>999</td>
-      <td>999</td>
-      <td>PE</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>sa</td>
-      <td>sq</td>
-    </tr> -->
-						<%
-    } %>
+							<td>sa</td>
+						</tr> -->
+						
 					</tbody>
 				</table>
 			</div>
