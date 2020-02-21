@@ -5,6 +5,7 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.text.DecimalFormat" %>
 
 
 <%!
@@ -118,6 +119,24 @@ public String viewAllLogins() {
 	        i++;
 			}
 		}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String ConnectedPlayers() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT * FROM ServerStatus");
+		while(rst.next()){
+         String i = rst.getString("CurrPlayer");
+         sb.append("<span class='_conectados'>" + i + "</span>");
+		}
+	}
 		catch(SQLException ex){
 			 sb.append(ex);
 			 System.out.println(ex);
@@ -278,6 +297,159 @@ public String TopEventCoins() {
 		while(rst.next()){
          String i = rst.getString(1);
          sb.append("<b>"+ i +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String TopClan() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 Name FROM Clan ORDER BY Point DESC");
+		while(rst.next()){
+         String i = rst.getString(1);
+         sb.append("<b>"+ i +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String TopKillPJ() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 Name FROM Character ORDER BY KillCount DESC");
+		while(rst.next()){
+         String i = rst.getString(1);
+         sb.append("<b>"+ i +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String TopPlayTimePJ() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 Name FROM Character ORDER BY PlayTime DESC");
+		while(rst.next()){
+         String i = rst.getString(1);
+         sb.append("<b>"+ i +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String TopPlayTimeTotalPJ() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 PlayTime FROM Character ORDER BY PlayTime DESC");
+		while(rst.next()){
+         String i = rst.getString(1);
+         double ii = Double.parseDouble(i) / (60 * 60);
+         DecimalFormat df = new DecimalFormat("0.00");
+         String rounded = df.format(ii);
+         sb.append("<b>"+ rounded +"</b> (Hs)");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String CountryPlayerTopKills() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT * FROM Account,Character where Account.AID = Character.AID AND Character.KillCount = (SELECT TOP 1 KillCount FROM Character ORDER BY KillCount DESC)");
+		while(rst.next()){
+         String i = rst.getString("Country");
+         sb.append("<b>"+ i +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String NameColorPlayerTopPT() { //top play time name color
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT * FROM Character,Account where Character.AID = Account.AID AND Character.PlayTime = (SELECT TOP 1 PlayTime FROM Character ORDER BY PlayTime DESC)");
+		while(rst.next()){
+         String r = rst.getString("RedColor");
+         String g = rst.getString("GreenColor");
+         String b = rst.getString("BlueColor");
+         String u = rst.getString("Name");
+         sb.append("<b style='color: rgb("+ r +"," + g + "," + b + "); text-shadow: 0px 0px 5px #000000;'>"+ u +"</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String SexTopPlayerKills() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 Sex FROM Character ORDER BY KillCount DESC");
+		while(rst.next()){
+         int i = rst.getInt(1);
+         if(i == 1)
+         	sb.append("<b>Women</b>");
+         else
+          	sb.append("<b>Men</b>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+public String TopClanPoints() {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT TOP 1 Point FROM Clan ORDER BY Point DESC");
+		while(rst.next()){
+         int i = rst.getInt(1);
+         sb.append("<b>" + i + "</b>");
 		}
 	}
 		catch(SQLException ex){
