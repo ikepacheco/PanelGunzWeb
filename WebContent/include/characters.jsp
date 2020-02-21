@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="model.*" %>
-<%@ page import="model.Conexion" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ include file="function.jsp" %> 
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -35,39 +35,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% 	
-						Conexion con = new Conexion();
-						Connection cn = con.con();
-						int i = 1;
-						try{
-							Statement st = cn.createStatement();
-							ResultSet rst = st.executeQuery("SELECT * FROM Character");
-							while(rst.next()){
-								%>
-								<tr>
-								<th scope='row'><%=i%></th>
-								<td><%=rst.getInt("CID")%></td>
-								<td><%=rst.getInt("AID")%></td>
-								<td><%=rst.getString("Name")%></td>
-									<td><%=rst.getInt("Sex")%></td>
-									<td><%=rst.getInt("Level")%></td>
-									<td><%=rst.getString("XP")%></td>
-									<td><%=rst.getInt("BP")%></td>
-									<td><%=rst.getInt("PlayTime")%></td>
-									<td><%=rst.getInt("KillCount")%></td>
-									<td><%=rst.getInt("DeathCount")%></td>
-									<td><%=rst.getInt("Ranking")%></td>
-									</tr>
-									<%
-								i++;
-							}
-						}
-						catch(SQLException ex){
-
-							%>
-							<tr><td><%=ex%></td></tr>
-								<%
-						} %>
+						<%=viewCharacters()%>
 					</tbody>
 				</table>
 			</div>

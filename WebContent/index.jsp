@@ -91,7 +91,7 @@
 				<center>
 					<div class="alert alert-danger" role="alert">
 						<h4 class="alert-heading">${error }</h4>
-						<p>Please login from website !</p>
+						<p>Please login from website ! <br>If you are not Admin you cant login here</p>
 						<hr><%=obj %></hr>
 						<p class="mb-0">
 							<a href="/PanelGunzWeb/" class="alert-link">Clic here for

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="model.*" %>
-<%@ page import="model.Conexion" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ include file="function.jsp" %> 
 <link rel="icon" href="img/demonfas.ico" type="image/ico" />
 <body>
 	<% 
@@ -29,33 +29,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% 	
-						Conexion con = new Conexion();
-						Connection cn = con.con();
-						int i = 1;
-						try{
-							Statement st = cn.createStatement();
-							ResultSet rst = st.executeQuery("SELECT * FROM Login order by UserID asc");
-							while(rst.next()){
-								%>
-								<tr>
-								<th scope='row'><%=i%></th>
-								<td><%=rst.getString("UserID")%></td>
-								<td><%=rst.getInt("AID")%></td>
-								<td>**********</td>
-								<td><%=rst.getString("LastIP")%></td>
-									<td><%=rst.getString("LastConnDate")%></td>
-									</tr>
-									<%
-								i++;
-							}
-						}
-						catch(SQLException ex){
-
-							%>
-							<tr><td><%=ex%></td></tr>
-								<%
-						} %>
+						<%=viewAllLogins()%>
 					</tbody>
 				</table>
 			</div>
