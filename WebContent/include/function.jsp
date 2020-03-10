@@ -458,4 +458,36 @@ public String TopClanPoints() {
 		}
 	    return sb.toString();
 	}
+public String SearchAccount(String UserID) {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = st.executeQuery("SELECT * FROM Account where UserID like '" + UserID + "'");
+		int i = 1;
+		while(rst.next()){
+         String _UserID = rst.getString("UserID");
+         sb.append("<tr><th scope='row'>"+ i +"</th>"+
+     			"<td>" + rst.getInt("AID") + "</td>"+
+     		 	"<td>" + rst.getString("UserID") + "</td>"+
+					"<td>" + rst.getInt("UGradeID") + "</td>"+
+					"<td>" + rst.getString("DonatorCoins") + "</td>"+
+					"<td>" + rst.getString("EventCoins") + "</td>"+
+					"<td>" + rst.getString("Country") + "</td>"+
+					"<td>" + rst.getInt("RedColor") + "</td>"+
+					"<td>" + rst.getInt("GreenColor") + "</td>"+
+					"<td>" + rst.getInt("BlueColor") + "</td>"+
+					"<td>" + rst.getString("sq") + "</td>"+
+					"<td>" + rst.getString("sa") + "</td>"+
+					"</tr>");
+		}
+	}
+		catch(SQLException ex){
+			 sb.append(ex);
+			 System.out.println(ex);
+		}
+	    return sb.toString();
+	}
+
 %>   
