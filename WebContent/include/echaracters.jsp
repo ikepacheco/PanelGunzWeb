@@ -6,246 +6,411 @@
 %>
 <jsp:include page="menu.jsp"></jsp:include>
 <body>
-<!-- 
-<table border="1" style="border-collapse: collapse" id="changename">
-<tr><td colspan="2"><b><?php echo $_STR[Char0]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;<?php echo $_STR[Char2]; ?>:&nbsp;&nbsp;<input type="text" name="nname" />
-    &nbsp;&nbsp;<input type="submit" name="changename" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="deletechar">
-<tr><td colspan="2"><b><?php echo $_STR[Char4]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />
-    &nbsp;&nbsp;<input type="submit" name="deletechar" value="<?php echo $_STR[Char5]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="deletecitems">
-<tr><td colspan="2"><b><?php echo $_STR[Char6]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />
-    &nbsp;&nbsp;<input type="submit" name="deletecitems" value="<?php echo $_STR[Char5]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="deleteaitems">
-<tr><td colspan="2"><b><?php echo $_STR[Char7]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-        <option value="2">AID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />
-    &nbsp;&nbsp;<input type="submit" name="deleteaitems" value="<?php echo $_STR[Char5]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="senditem">
-<tr><td colspan="2"><b><?php echo $_STR[Char8]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;ItemID:&nbsp;&nbsp;<input type="text" name="itemid" />
-    &nbsp;&nbsp;<input type="submit" name="senditem" value="<?php echo $_STR[Char10]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="deleteitem">
-<tr><td colspan="2"><b><?php echo $_STR[Char9]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;ItemID:&nbsp;&nbsp;<input type="text" name="itemid" />
-    &nbsp;&nbsp;<input type="submit" name="deleteitem" value="<?php echo $_STR[Char5]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="resetchar">
-<tr><td colspan="2"><b><?php echo $_STR[Char11]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />
-    &nbsp;&nbsp;<input type="submit" name="resetchar" value="<?php echo $_STR[Char12]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changexp">
-<tr><td colspan="2"><b><?php echo $_STR[Char13]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;EXP:&nbsp;&nbsp;<input type="text" name="exp" />
-    &nbsp;&nbsp;<input type="submit" name="changexp" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changelvl">
-<tr><td colspan="2"><b><?php echo $_STR[Char14]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;LvL:&nbsp;&nbsp;<input type="text" name="lvl" />
-    &nbsp;&nbsp;<input type="submit" name="changelvl" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changebounty">
-<tr><td colspan="2"><b><?php echo $_STR[Char15]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;Bounty:&nbsp;&nbsp;<input type="text" name="bounty" />
-    &nbsp;&nbsp;<input type="submit" name="changebounty" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changesex">
-<tr><td colspan="2"><b><?php echo $_STR[Char16]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;
-    <select name="sex">
-        <option value="0"><?php echo $_STR[Char17]; ?></option>
-        <option value="1"><?php echo $_STR[Char18]; ?></option>
-    </select>
-    &nbsp;&nbsp;<input type="submit" name="changesex" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changehair">
-<tr><td colspan="2"><b><?php echo $_STR[Char19]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;<?php echo $_STR[Char20]; ?>
-    <select name="hair">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-    &nbsp;&nbsp;<input type="submit" name="changehair" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br />
-<table border="1" style="border-collapse: collapse" id="changeface">
-<tr><td colspan="2"><b><?php echo $_STR[Char21]; ?></b></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<form method="post" action="index.php?do=characters">
-<tr>
-    <td>
-    <select name="type">
-        <option value="0"><?php echo $_STR[Char1]; ?></option>
-        <option value="1">CID</option>
-    </select>:&nbsp;&nbsp;<input type="text" name="id" />&nbsp;&nbsp;<?php echo $_STR[Char22]; ?>
-    <select name="face">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-    &nbsp;&nbsp;<input type="submit" name="changeface" value="<?php echo $_STR[Char3]; ?>" />
-    </td>
-</tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-</form>
-</table>
-<br /><br />
--->
+
+<div class="card mx-auto w-95 border-secondary" style="margin-top: 40px;">
+		<h5 class="card-header h5 bg-secondary text-white">Edit Characters</h5>
+		<div class="card-body my-auto text-center">
+
+
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Change Caracter Name</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="New Name">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Change</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Delete Caracter</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Delete</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Delete All Equip Items</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Delete</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Delete All Storage Items</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+								<option value="aid">AID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Delete</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Send Equip Item</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">ItemID</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/itemid.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="ItemID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Send</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Delete Equip Item</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">ItemID</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/itemid.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="ItemID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Delete</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Reset Character (Lv: 1 | Exp: 0 | BT: 0)</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Reset</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Change Character Exp</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Exp</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Exp">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Change</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Change Character Level</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Level</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Level">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Change</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+					<h5 class="card-header h5 bg-secondary text-light">Change Character Bounty</h5>
+					<div class="card-body my-auto text-center">
+						<div class="container w-50">
+							<select class="custom-select custom-select-lg mb-3">
+								<option value="character" selected>Character</option>
+								<option value="cid">CID</option>
+							</select>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Character</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+							</div>
+							<label class="sr-only"
+								for="inlineFormInputGroupUsername2">Bounty</label>
+							<div class="input-group mb-2 mr-sm-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<img src="img/login.png" alt="" id="imgLogin" />
+									</div>
+								</div>
+								<input type="text" class="form-control"
+									id="inlineFormInputGroupUsername2" placeholder="Bounty">
+							</div>
+	
+							<button type="submit" class="btn btn-primary mb-2">Change</button>
+						</div>
+					</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+				<h5 class="card-header h5 bg-secondary text-light">Change Character Sex</h5>
+				<div class="card-body my-auto text-center">
+					<div class="container w-50">
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="character" selected>Character</option>
+							<option value="cid">CID</option>
+						</select>
+						<label class="sr-only"
+							for="inlineFormInputGroupUsername2">Character</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+						</div>
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="man" selected>>Man</option>
+							<option value="woman">>Woman</option>
+						</select>
+
+						<button type="submit" class="btn btn-primary mb-2">Change</button>
+					</div>
+				</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+				<h5 class="card-header h5 bg-secondary text-light">Change Character Hair</h5>
+				<div class="card-body my-auto text-center">
+					<div class="container w-50">
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="character" selected>Character</option>
+							<option value="cid">CID</option>
+						</select>
+						<label class="sr-only"
+							for="inlineFormInputGroupUsername2">Character</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+						</div>
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="0" selected>>0</option>
+							<option value="1">>1</option>
+							<option value="2">>2</option>
+							<option value="3">>3</option>
+						</select>
+
+						<button type="submit" class="btn btn-primary mb-2">Change</button>
+					</div>
+				</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+				<h5 class="card-header h5 bg-secondary text-light">Change Character Face</h5>
+				<div class="card-body my-auto text-center">
+					<div class="container w-50">
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="character" selected>Character</option>
+							<option value="cid">CID</option>
+						</select>
+						<label class="sr-only"
+							for="inlineFormInputGroupUsername2">Character</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Character Name/CID">
+						</div>
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="0" selected>>0</option>
+							<option value="1">>1</option>
+							<option value="2">>2</option>
+							<option value="3">>3</option>
+						</select>
+
+						<button type="submit" class="btn btn-primary mb-2">Change</button>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+</div>
 
 </body>
 </html>

@@ -106,6 +106,99 @@
 				</div>
 			</div>
 			<div class="card mx-auto w-95" style="margin-top: 40px;">
+				<h5 class="card-header h5 bg-secondary text-light">Change NameColor</h5>
+				<div class="card-body my-auto text-center">
+					<div class="container w-50">
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="userid" selected>UserID</option>
+							<option value="aid">AID</option>
+						</select> <label class="sr-only"
+							for="inlineFormInputGroupUsername2">Rank</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Username/AID">
+						</div>
+						 <label class="sr-only"
+							for="inlineFormInputGroupUsername2">R</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Red">
+						</div>
+						 <label class="sr-only"
+							for="inlineFormInputGroupUsername2">G</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Green">
+						</div>
+						 <label class="sr-only"
+							for="inlineFormInputGroupUsername2">B</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Blue">
+						</div>
+
+						<button type="submit" class="btn btn-primary mb-2">Change</button>
+					</div>
+				</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
+				<h5 class="card-header h5 bg-secondary text-light">Change Country</h5>
+				<div class="card-body my-auto text-center">
+					<div class="container w-50">
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="userid" selected>UserID</option>
+							<option value="aid">AID</option>
+						</select> <br> <label class="sr-only"
+							for="inlineFormInputGroupUsername2">Username</label>
+						<div class="input-group mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<img src="img/login.png" alt="" id="imgLogin" />
+								</div>
+							</div>
+							<input type="text" class="form-control"
+								id="inlineFormInputGroupUsername2" placeholder="Username/AID">
+						</div>
+						<select class="custom-select custom-select-lg mb-3">
+							<option value="AR">AR - Argentina</option>
+							<option value="BO">BO - Bolivia</option>
+							<option value="BR">BR - Brasil</option>
+							<option value="CA">CA - Canada</option>
+							<option value="CL">CL - Chile</option>
+							<option value="CO">CO - Colombia</option>
+							<option value="EC">EC - Ecuador</option>
+							<option value="ES">ES - España</option>
+							<option value="PA">PA - Panama</option>
+							<option value="PE" selected>PE - Perú</option>
+							<option value="UY">UY - Urugay</option>
+							<option value="VE">VE - Venezuela</option>
+						</select>
+
+						<button type="submit" class="btn btn-primary mb-2">Change</button>
+					</div>
+				</div>
+			</div>
+			<div class="card mx-auto w-95" style="margin-top: 40px;">
 				<h5 class="card-header h5 bg-secondary text-light">Send Item all Accounts</h5>
 				<div class="card-body my-auto text-center">
 					<div class="container w-50">
