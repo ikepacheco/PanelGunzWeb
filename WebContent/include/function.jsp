@@ -490,4 +490,186 @@ public String SearchAccount(String UserID) {
 	    return sb.toString();
 	}
 
+public String searchAccount(Object usuario, Object type) {
+    StringBuilder sb=new StringBuilder();
+    Conexion con = new Conexion();
+	Connection cn = con.con();
+	int i = 1;
+	try{
+		Statement st = cn.createStatement();
+		ResultSet rst = null; 
+		if(type != null && usuario != null){
+			if(type.equals("")){
+				rst = st.executeQuery("SELECT * FROM Account");
+				while(rst.next()){
+			        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+			        			"<td>" + rst.getInt("AID") + "</td>"+
+			        		 	"<td>" + rst.getString("UserID") + "</td>"+
+								"<td>" + rst.getInt("UGradeID") + "</td>"+
+								"<td>" + rst.getString("DonatorCoins") + "</td>"+
+								"<td>" + rst.getString("EventCoins") + "</td>"+
+								"<td>" + rst.getString("Country") + "</td>"+
+								"<td>" + rst.getInt("RedColor") + "</td>"+
+								"<td>" + rst.getInt("GreenColor") + "</td>"+
+								"<td>" + rst.getInt("BlueColor") + "</td>"+
+								"<td>" + rst.getString("sq") + "</td>"+
+								"<td>" + rst.getString("sa") + "</td>"+
+								"</tr>");
+			        i++;
+					}				
+			}
+			if(usuario.equals("")){
+				 switch (type.toString()){
+				 case "0":
+				 case "1":
+					 rst = st.executeQuery("SELECT * FROM Account");
+						while(rst.next()){
+					        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+					        			"<td>" + rst.getInt("AID") + "</td>"+
+					        		 	"<td>" + rst.getString("UserID") + "</td>"+
+										"<td>" + rst.getInt("UGradeID") + "</td>"+
+										"<td>" + rst.getString("DonatorCoins") + "</td>"+
+										"<td>" + rst.getString("EventCoins") + "</td>"+
+										"<td>" + rst.getString("Country") + "</td>"+
+										"<td>" + rst.getInt("RedColor") + "</td>"+
+										"<td>" + rst.getInt("GreenColor") + "</td>"+
+										"<td>" + rst.getInt("BlueColor") + "</td>"+
+										"<td>" + rst.getString("sq") + "</td>"+
+										"<td>" + rst.getString("sa") + "</td>"+
+										"</tr>");
+					        i++;
+							}						
+					 break;
+				 case "2":
+					 rst = st.executeQuery("SELECT * FROM Character");
+						while(rst.next()){
+					        sb.append("<tr>" +
+									"<th scope='row'>" + i + "</th>"+
+									"<td>"+ rst.getInt("CID") +"</td>"+
+									"<td>"+ rst.getInt("AID") +"</td>"+
+									"<td>"+ rst.getString("Name") +"</td>"+
+										"<td>"+ rst.getInt("Sex") +"</td>"+
+										"<td>"+ rst.getInt("Level") +"</td>"+
+										"<td>"+ rst.getString("XP") +"</td>"+
+										"<td>"+ rst.getInt("BP") +"</td>"+
+										"<td>"+ rst.getInt("PlayTime") +"</td>"+
+										"<td>"+ rst.getInt("KillCount") +"</td>"+
+										"<td>"+ rst.getInt("DeathCount") +"</td>"+
+										"<td>"+ rst.getInt("Ranking") +"</td>"+
+										"</tr>");
+						    i++;
+						}
+					 break;
+				 }
+			}
+			if(!type.equals("") && !usuario.equals("")){
+				switch(type.toString()){
+					case "0":
+						rst = st.executeQuery("SELECT * FROM Account where AID like'" + usuario + "'");
+						while(rst.next()){
+					        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+					        			"<td>" + rst.getInt("AID") + "</td>"+
+					        		 	"<td>" + rst.getString("UserID") + "</td>"+
+										"<td>" + rst.getInt("UGradeID") + "</td>"+
+										"<td>" + rst.getString("DonatorCoins") + "</td>"+
+										"<td>" + rst.getString("EventCoins") + "</td>"+
+										"<td>" + rst.getString("Country") + "</td>"+
+										"<td>" + rst.getInt("RedColor") + "</td>"+
+										"<td>" + rst.getInt("GreenColor") + "</td>"+
+										"<td>" + rst.getInt("BlueColor") + "</td>"+
+										"<td>" + rst.getString("sq") + "</td>"+
+										"<td>" + rst.getString("sa") + "</td>"+
+										"</tr>");
+					        i++;
+							}	
+						break;
+					case "1":
+						rst = st.executeQuery("SELECT * FROM Account where UserID like '" + usuario + "'");
+						while(rst.next()){
+					        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+					        			"<td>" + rst.getInt("AID") + "</td>"+
+					        		 	"<td>" + rst.getString("UserID") + "</td>"+
+										"<td>" + rst.getInt("UGradeID") + "</td>"+
+										"<td>" + rst.getString("DonatorCoins") + "</td>"+
+										"<td>" + rst.getString("EventCoins") + "</td>"+
+										"<td>" + rst.getString("Country") + "</td>"+
+										"<td>" + rst.getInt("RedColor") + "</td>"+
+										"<td>" + rst.getInt("GreenColor") + "</td>"+
+										"<td>" + rst.getInt("BlueColor") + "</td>"+
+										"<td>" + rst.getString("sq") + "</td>"+
+										"<td>" + rst.getString("sa") + "</td>"+
+										"</tr>");
+					        i++;
+							}	
+						break;
+					case "2":
+						rst = st.executeQuery("SELECT * FROM Character where Name like '" + usuario + "'");
+						while(rst.next()){
+					        sb.append("<tr>" +
+									"<th scope='row'>" + i + "</th>"+
+									"<td>"+ rst.getInt("CID") +"</td>"+
+									"<td>"+ rst.getInt("AID") +"</td>"+
+									"<td>"+ rst.getString("Name") +"</td>"+
+										"<td>"+ rst.getInt("Sex") +"</td>"+
+										"<td>"+ rst.getInt("Level") +"</td>"+
+										"<td>"+ rst.getString("XP") +"</td>"+
+										"<td>"+ rst.getInt("BP") +"</td>"+
+										"<td>"+ rst.getInt("PlayTime") +"</td>"+
+										"<td>"+ rst.getInt("KillCount") +"</td>"+
+										"<td>"+ rst.getInt("DeathCount") +"</td>"+
+										"<td>"+ rst.getInt("Ranking") +"</td>"+
+										"</tr>");
+						    i++;
+						}
+						break;
+				}
+			}
+		}
+		else if (type == null && usuario == null){
+			rst = st.executeQuery("SELECT * FROM Account");
+			while(rst.next()){
+		        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+		        			"<td>" + rst.getInt("AID") + "</td>"+
+		        		 	"<td>" + rst.getString("UserID") + "</td>"+
+							"<td>" + rst.getInt("UGradeID") + "</td>"+
+							"<td>" + rst.getString("DonatorCoins") + "</td>"+
+							"<td>" + rst.getString("EventCoins") + "</td>"+
+							"<td>" + rst.getString("Country") + "</td>"+
+							"<td>" + rst.getInt("RedColor") + "</td>"+
+							"<td>" + rst.getInt("GreenColor") + "</td>"+
+							"<td>" + rst.getInt("BlueColor") + "</td>"+
+							"<td>" + rst.getString("sq") + "</td>"+
+							"<td>" + rst.getString("sa") + "</td>"+
+							"</tr>");
+		        i++;
+				}				
+		}
+		else if (type == null || usuario == null){
+			rst = st.executeQuery("SELECT * FROM Account");
+			while(rst.next()){
+		        sb.append("<tr><th scope='row'>"+ i +"</th>"+
+		        			"<td>" + rst.getInt("AID") + "</td>"+
+		        		 	"<td>" + rst.getString("UserID") + "</td>"+
+							"<td>" + rst.getInt("UGradeID") + "</td>"+
+							"<td>" + rst.getString("DonatorCoins") + "</td>"+
+							"<td>" + rst.getString("EventCoins") + "</td>"+
+							"<td>" + rst.getString("Country") + "</td>"+
+							"<td>" + rst.getInt("RedColor") + "</td>"+
+							"<td>" + rst.getInt("GreenColor") + "</td>"+
+							"<td>" + rst.getInt("BlueColor") + "</td>"+
+							"<td>" + rst.getString("sq") + "</td>"+
+							"<td>" + rst.getString("sa") + "</td>"+
+							"</tr>");
+		        i++;
+				}	
+		}
+	}
+	catch(SQLException ex){
+		 sb.append(ex);
+		 System.out.println(ex + "1");
+	}
+    return sb.toString();
+}
+
+
 %>   

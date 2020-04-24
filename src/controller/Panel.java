@@ -90,6 +90,10 @@ public class Panel extends HttpServlet {
 				request.getRequestDispatcher("include/ecoins.jsp").forward(request, response);
 			}else if(action.equalsIgnoreCase("buscar")) {
 				request.getRequestDispatcher("include/buscar.jsp").forward(request, response);
+			}else if(action.equals(null)) {
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}else {
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		}
 	}
